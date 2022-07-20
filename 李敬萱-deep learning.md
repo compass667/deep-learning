@@ -59,3 +59,30 @@ $$P(H|E) =\frac{P(E,H)}{P(E)} = \frac{P(E|H)P(H)}{P(E)}$$
     1. 无监督学习
     2. 监督学习
 20. 正则化
+21. SVM　[参考链接](https://zhuanlan.zhihu.com/p/31652569?ivk_sa=1024320u)
+    1.  间隔：$$\begin{equation*}\gamma:= \min_i \frac{2\vert  \boldsymbol{w^Tx_i+}b \vert}{\Vert \boldsymbol{w} \Vert}\end{equation*}$$
+    2. 线性支持向量机:希望找到使间隔最大的参数$\boldsymbol{w},b$
+    $$\begin{equation*}
+    \begin{split}
+    &\max_{\boldsymbol{w},b} \min_{i} \frac{2\vert  \boldsymbol{w^Tx_i+}b \vert}{\Vert \boldsymbol{w} \Vert}\\
+    &s.t.\ \begin{array}{lc}
+    y_i(\boldsymbol{w^Tx_i+}b)>0，\forall i \in [1,n]
+    \end{array}
+    \end{split}
+    \end{equation*}
+    $$
+    若 $(\boldsymbol{w^*},b^*)是原问题的解，那么 (r\boldsymbol{w^*},rb^*)$ 也是原问题的解，不妨令$$\min_{i}\vert \boldsymbol{w^Tx+}b\vert = 1$$
+    原问题转换为
+    $$\begin{equation*}
+    \begin{split}
+    &\min_{\boldsymbol{w,b}} \frac{\Vert \boldsymbol{w} \Vert}{2}=\frac{1}{2} {\boldsymbol{w}^T\boldsymbol{w}}\\
+    &s.t.\ \begin{array}{lc}
+    y_i(\boldsymbol{w^Tx_i+}b)=1，\forall i \in [1,n]
+    \end{array}
+    \end{split}
+    \end{equation*}
+    $$
+    3. kernel method
+    核心思想：将低维数据映射到高维空间
+    4.  kernel trick
+    因为需要的是内积，所以找到kernel function $k(\boldsymbol{u,v})=\Phi(\boldsymbol{u})^T\Phi(\boldsymbol{v})$，简化运算
