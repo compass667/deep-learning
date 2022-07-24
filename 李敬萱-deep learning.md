@@ -55,11 +55,8 @@ $$P(H|E) =\frac{P(E,H)}{P(E)} = \frac{P(E|H)P(H)}{P(E)}$$
     9. 缺失值填补
     10. 去噪
     11. 密度估计或概率分布律函数估计
-19. 经验
-    1. 无监督学习
-    2. 监督学习
-20. 正则化
-21. SVM　[参考链接](https://zhuanlan.zhihu.com/p/31652569?ivk_sa=1024320u)
+19. 正则化
+20. SVM　[参考链接](https://zhuanlan.zhihu.com/p/31652569?ivk_sa=1024320u)
     1.  间隔：$$\begin{equation*}\gamma:= \min_i \frac{2\vert  \boldsymbol{w^Tx_i+}b \vert}{\Vert \boldsymbol{w} \Vert}\end{equation*}$$
     2. 线性支持向量机:希望找到使间隔最大的参数$\boldsymbol{w},b$
     $$\begin{equation*}
@@ -82,7 +79,22 @@ $$P(H|E) =\frac{P(E,H)}{P(E)} = \frac{P(E|H)P(H)}{P(E)}$$
     \end{split}
     \end{equation*}
     $$
-    3. kernel method
+    1. kernel method
     核心思想：将低维数据映射到高维空间
-    4.  kernel trick
+    1.  kernel trick
     因为需要的是内积，所以找到kernel function $k(\boldsymbol{u,v})=\Phi(\boldsymbol{u})^T\Phi(\boldsymbol{v})$，简化运算
+21. k-最邻近
+    找到最近的k个样本，求均值
+22. 决策树，划分输入空间
+23. PCA
+24. 数据降维方法：多维缩放(MDS)
+    主要特点：原始空间样本距离=低维空间样本距离
+    问题描述：原始数据矩阵为$D\in \mathbb{R^{m*d}}$,样本$\boldsymbol{x_i},\boldsymbol{x_j}$的距离dist降维以后的$d'$维空间$Z\in \mathbb{R^{m*d'}}$,即找到m个$d'$维向量
+    $$\min_{\boldsymbol{z}} \sum_{i,j}(\Vert \boldsymbol{z_i}-\boldsymbol{z_j}\Vert-d_{ij})^2 $$ $d_{ij}$是原始样本$i$和原始样本$j$之间的距离,度量空间的选取比较随意，只需要满足$d_{ii}=0,d_{ij}=d_{ji},d_{ik}+d_{jk} \geq d_{ij}$即可
+    解不唯一(平移，旋转)
+    所以去中心化$\sum\limits_{i=1,...m}\boldsymbol{z_i}=\boldsymbol{0}$,使得解唯一
+    直接求解$Z$比较麻烦，所以求解
+    $\\B = ZZ^T\in \mathbb{R}^{m*m} \\B= V\Lambda V^T = (V\Lambda^\frac{1}{2})(V\Lambda^\frac{1}{2})^T\\
+    Z = V \Lambda^\frac{1}{2} \\$但这样$Z$是一个m*m的方阵，不符合规范，所以取前$d'$个最大的特征值构成$\Lambda_{d'}^\frac{1}{2} \in \mathbb{R}^{d'*d'}$,对应的特征向量$V_{d'}\in \mathbb{R}^{m*d'}\\ V_{d'}\Lambda_{d'}^{\frac{1}{2}}$即为所求，具体计算步骤见[参考链接](https://zhuanlan.zhihu.com/p/433336369)
+
+25.  流形
